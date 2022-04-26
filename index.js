@@ -1,13 +1,16 @@
 let balance = 0;
 
 const myDeposit = (event) => {
-    
     let deposit = document.getElementById("deposit").value;
-  
     if (deposit < 0) {
-    document.getElementById("message"
+        
+        document.getElementById("message"
         ).innerHTML = `<h2 style ="color: red" >
         Please insert a valid amount to deposit!!!</h2>`;
+        setTimeout(()=>{
+            document.getElementById("message"
+            ).style.display = "none"
+        },2000)
      }
     else{
      balance += parseInt(deposit,10);
@@ -19,9 +22,15 @@ const myDeposit = (event) => {
 const myWithdrawal = (event) =>{
 
     let withrawal = document.getElementById("withdraw").value;
+
     if(withrawal > balance || balance < 0){
-        document.getElementById("message").innerHTML = `<h2 style="color: red" >
+        document.getElementById("message1").innerHTML = `<h2 style="color: red" >
         Insufficient funds!</h2>`
+        setTimeout(()=>{
+            document.getElementById("message1"
+            ).style.display = "none"
+        },2000)
+
     }
     else{
      balance -= parseInt(withrawal,10);
