@@ -17,10 +17,13 @@ const regDetail = () => {
     balance: 0,
   };
   
-  let accs = accounts.push(accountHolder);
-  console.log(accs);
 
-  localStorage.account = accounts[accountHolder.accNum, accountHolder.userName, accountHolder.userEmail, accountHolder.balance];
+  accounts.push(accountHolder);
+  console.log(accountHolder);
+
+  localStorage.setItem("account", JSON.stringify(accountHolder));
+  let newObj = window.localStorage.getItem("account");
+  console.log(JSON.parse(newObj));
 };
 
 const myDeposit = (event) => {
