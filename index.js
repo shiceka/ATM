@@ -9,7 +9,9 @@ const accId = () => {
 const regDetail = () => {
   let userName = document.getElementById("r-username").value;
   let userEmail = document.getElementById("r-email").value;
-    
+  reset();
+  document.getElementById('registering').style.display='none';
+
   let accountHolder = {
     accNum: accId(),
     userName: userName,
@@ -17,13 +19,36 @@ const regDetail = () => {
     balance: 0,
   };
   
-
   accounts.push(accountHolder);
-  console.log(accountHolder);
+ 
+  let newObj = localStorage.getItem("account")||"[]"
+  let newbie = [...JSON.parse(newObj), accountHolder] 
+  return localStorage.setItem("account", JSON.stringify(newbie));  
 
-  localStorage.setItem("account", JSON.stringify(accountHolder));
-  let newObj = window.localStorage.getItem("account");
-  console.log(JSON.parse(newObj));
+
+// var item = localStorage.getItem("Users Data: ");
+// var arrayobjfromls = JSON.parse(item);
+// var found = false;
+// for (var i = 0; i < arrayobjfromls.length; i++) {
+//     if(users.UserName === arrayobjfromls[i].UserName) {
+//         found = true;
+//         break;
+//     }
+// }
+// if ( found ) {
+//     alert("This username is already in use. Please try another.");
+// } else {
+//     array.push( users );
+//     localStorage.setItem("Users Data: ", JSON.stringify(array));
+// }
+
+
+};
+
+const logDetail = () => {
+  let userEmail = document.getElementById("l-email").value;
+  reset();
+  document.getElementById("login").style.display ='none';
 };
 
 const myDeposit = (event) => {
@@ -60,4 +85,6 @@ const myWithdrawal = (event) => {
 const reset = () => {
   document.getElementById("deposit").value = " ";
   document.getElementById("withdraw").value = " ";
+  document.getElementById("r-username").value = " ";
+  let userEmail = document.getElementById("r-email").value = " ";
 };

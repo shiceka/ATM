@@ -8,19 +8,22 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>ATM</h1>
+    <h1>HUZET ATM</h1>
     <div class="container">
-      <!-- <div class="login">
-        <h3>Welcome back please log in</h3>
-
-      </div> -->
-      <div class="registering">
-        <h3>Create a new account</h3>
+      <div class="btn-login"><button type="submit" onclick="document.getElementById('login').style.display='block'">Login</button></div>
+      <div class="btn-register"><button type="submit"  onclick="document.getElementById('registering').style.display='block'">Register</button></div>
+      <div id="login" style="display: none;">
+        <legend>Welcome back please log in</legend>
+        <label>Email address: <input id="l-email" type="email"></label><br>
+        <button type="submit" onclick="logDetail()">Sign in</button>
+      </div>
+      <div id="registering" style="display: none;">
+        <legend>Create a new account</legend>
         <label>Username: <input id="r-username" type="text" required></label><br>
         <label>Email address: <input id="r-email" type="email"></label><br>
         <br /><button type="submit" onclick="regDetail()">Sign up</button><br />
       </div><br />
-      <div class="depositing">
+      <div class="depositing" style="display: none;">
         <label
           >Deposit: <input id="deposit" type="number" />
           <button onclick="myDeposit(event)">
@@ -29,7 +32,7 @@
         ><br />
         <small id="message"></small>
       </div>
-      <div class="withdrawal">
+      <div class="withdrawal" style="display: none;">
         <label
           >Withdrawal: <input id="withdraw" type="number" /><button
             onclick="myWithdrawal(event)"
@@ -38,9 +41,7 @@
           </button></label
         ><br />
         <small id="message1"></small>
-      </div>
-      <div>
-        <label>Balance: </label>
+        <label >Balance: </label>
         <p id="display"></p>
       </div>
     </div>
