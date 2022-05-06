@@ -18,13 +18,28 @@ const regDetail = () => {
     userEmail: userEmail,
     balance: 0,
   };
-  
-  accounts.push(accountHolder);
- 
-  let newObj = localStorage.getItem("account")||"[]"
-  let newbie = [...JSON.parse(newObj), accountHolder] 
-  return localStorage.setItem("account", JSON.stringify(newbie));  
 
+   let regdeets = [JSON.parse(localStorage.getItem("account"))][0]
+
+   if(regdeets === null){
+    accounts.push(accountHolder);
+    let newObj = localStorage.getItem("account")||"[]"
+    let newbie = [...JSON.parse(newObj), accountHolder] 
+    return localStorage.setItem("account", JSON.stringify(newbie));  
+   }
+   
+
+
+  for(let i = 0; i < regdeets.length; i++){
+    if(userEmail ===  regdeets[i].userEmail){
+      return alert("Well that email you see... is already in use!");
+      // break;
+    }
+    accounts.push(accountHolder);
+    let newObj = localStorage.getItem("account")||"[]"
+    let newbie = [...JSON.parse(newObj), accountHolder] 
+    return localStorage.setItem("account", JSON.stringify(newbie));  
+  }
 
 // var item = localStorage.getItem("Users Data: ");
 // var arrayobjfromls = JSON.parse(item);
@@ -41,14 +56,17 @@ const regDetail = () => {
 //     array.push( users );
 //     localStorage.setItem("Users Data: ", JSON.stringify(array));
 // }
-
-
 };
 
 const logDetail = () => {
+  let logdeets = [JSON.parse(localStorage.getItem("account"))][0];
+
   let userEmail = document.getElementById("l-email").value;
   reset();
   document.getElementById("login").style.display ='none';
+
+  return logdeets.filter(acc => acc.userEmail === logdeets.userEmail)
+
 };
 
 const myDeposit = (event) => {
@@ -83,6 +101,7 @@ const myWithdrawal = (event) => {
 };
 
 const reset = () => {
+
   document.getElementById("deposit").value = " ";
   document.getElementById("withdraw").value = " ";
   document.getElementById("r-username").value = " ";

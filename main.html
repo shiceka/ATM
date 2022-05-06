@@ -20,10 +20,11 @@
       <div id="registering" style="display: none;">
         <legend>Create a new account</legend>
         <label>Username: <input id="r-username" type="text" required></label><br>
-        <label>Email address: <input id="r-email" type="email"></label><br>
+        <label>Email address: <input id="r-email" type="email" required></label><br>
         <br /><button type="submit" onclick="regDetail()">Sign up</button><br />
       </div><br />
-      <div class="depositing" style="display: none;">
+      <div id="transactions" style="display: none;">
+      <div class="depositing" >
         <label
           >Deposit: <input id="deposit" type="number" />
           <button onclick="myDeposit(event)">
@@ -32,7 +33,7 @@
         ><br />
         <small id="message"></small>
       </div>
-      <div class="withdrawal" style="display: none;">
+      <div class="withdrawal" >
         <label
           >Withdrawal: <input id="withdraw" type="number" /><button
             onclick="myWithdrawal(event)"
@@ -41,8 +42,10 @@
           </button></label
         ><br />
         <small id="message1"></small>
-        <label >Balance: </label>
+      </div>
+      <div><label >Balance: </label>
         <p id="display"></p>
+      </div>
       </div>
     </div>
 
