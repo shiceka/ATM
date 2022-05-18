@@ -32,7 +32,7 @@ const regDetail = () => {
 
   for(let i = 0; i < regdeets.length; i++){
     if(userEmail ===  regdeets[i].userEmail){
-      return alert("Well that email you see... is already in use!");
+      return alert("Well that email unfortunately... is already in use!");
       // break;
     }
     accounts.push(accountHolder);
@@ -60,13 +60,10 @@ const regDetail = () => {
 
 const logDetail = () => {
   let logdeets = [JSON.parse(localStorage.getItem("account"))][0];
-
   let userEmail = document.getElementById("l-email").value;
+  return logdeets.filter(acc => acc.userEmail === logdeets.userEmail)
   reset();
   document.getElementById("login").style.display ='none';
-
-  return logdeets.filter(acc => acc.userEmail === logdeets.userEmail)
-
 };
 
 const myDeposit = (event) => {
